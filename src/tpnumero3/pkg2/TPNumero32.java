@@ -15,6 +15,10 @@ public class TPNumero32 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Ventana ventana = new Ventana();
+        ventana.setVisible(true);
+        ventana.setLocationRelativeTo(null);
+        //LA UNIDAD DE MEDIDA DE TEMPERATURA TOMADA EN CUENTA SON GRADOS CELSIUS, ENTONCES ES UN CONVERSOR DE GRADOS CELSIUS (C) A LAS DEMÁS UNIDADES MENCIONADAS.
     }
     
 }

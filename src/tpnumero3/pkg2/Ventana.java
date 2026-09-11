@@ -4,6 +4,8 @@
  */
 package tpnumero3.pkg2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Pablo Carnota
@@ -38,7 +40,7 @@ public class Ventana extends javax.swing.JFrame {
         btnFahrenheit = new javax.swing.JRadioButton();
         btnCelsius = new javax.swing.JRadioButton();
         btnKelvin = new javax.swing.JRadioButton();
-        btnRadianes = new javax.swing.JRadioButton();
+        btnRankine = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ejercicio 2 Conversor de temperaturas");
@@ -54,7 +56,7 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Ingrese temperatura en Grados:");
+        jLabel2.setText("Ingrese temperatura en Grados (Celsius):");
 
         txtBox.setBackground(new java.awt.Color(255, 255, 255));
         txtBox.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -69,6 +71,7 @@ public class Ventana extends javax.swing.JFrame {
         btnConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-aprobar-y-actualizar-48.png"))); // NOI18N
         btnConvert.setText("Convertir");
         btnConvert.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnConvert.addActionListener(this::btnConvertActionPerformed);
 
         bgrMedida.add(btnFahrenheit);
         btnFahrenheit.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -87,10 +90,10 @@ public class Ventana extends javax.swing.JFrame {
         btnKelvin.setForeground(new java.awt.Color(0, 0, 0));
         btnKelvin.setText("A Kelvin");
 
-        bgrMedida.add(btnRadianes);
-        btnRadianes.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnRadianes.setForeground(new java.awt.Color(0, 0, 0));
-        btnRadianes.setText("A Radianes");
+        bgrMedida.add(btnRankine);
+        btnRankine.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnRankine.setForeground(new java.awt.Color(0, 0, 0));
+        btnRankine.setText("A Rankine");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,8 +124,8 @@ public class Ventana extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCelsius)
-                            .addComponent(btnRadianes))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                            .addComponent(btnRankine))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +142,7 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(btnCelsius))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRadianes)
+                    .addComponent(btnRankine)
                     .addComponent(btnKelvin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(btnConvert)
@@ -191,30 +194,30 @@ public class Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCelsiusActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
+        // TODO add your handling code here:
+        double grado= Integer.parseInt(txtBox.getText());
+        
+        if(btnFahrenheit.isSelected()){
+            fahrenheit= grado * 9 / 5 + 32;
+            JOptionPane.showMessageDialog(this, "La temperatura en grados Fahrenheit es: " + fahrenheit+"°F");
+           
+        }else if(btnKelvin.isSelected()){
+            kelvin= grado + 273.15;
+            JOptionPane.showMessageDialog(this, "La temperatura en grados Kelvin es: " + kelvin + "K");
         }
-        //</editor-fold>
+        else if(btnCelsius.isSelected()){
+            JOptionPane.showMessageDialog(this, "La temperatura en grados Celsius es: " + grado+"°C");
+        }
+        else if(btnRankine.isSelected()){
+       rankine = (grado+273.15) * 9 / 5;      
+       //°R=(°C+273.15)× 9​ / 5 Fórmula Rankine (Unidad de Medida)
+       JOptionPane.showMessageDialog(this, "La temperatura en grados Rankine es: " + rankine +"°R");
+        }
+        
+    }//GEN-LAST:event_btnConvertActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Ventana().setVisible(true));
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgrMedida;
@@ -222,11 +225,22 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton btnConvert;
     private javax.swing.JRadioButton btnFahrenheit;
     private javax.swing.JRadioButton btnKelvin;
-    private javax.swing.JRadioButton btnRadianes;
+    private javax.swing.JRadioButton btnRankine;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBox;
     // End of variables declaration//GEN-END:variables
+
+
+
+double fahrenheit;
+double kelvin;
+double rankine;
+
+
+
+
+
 }
