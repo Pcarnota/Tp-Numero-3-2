@@ -1,0 +1,41 @@
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+/build/
+/dist/
+
+# Archivos de NetBeans
+/nbproject/private/
+/nbproject/Makefile-*.mk
+/nbproject/Package-*.bash
+/nbproject/build-impl.xml
+
+# Archivos compilados de Java
+*.class
+*.jar
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Archivos generados por Maven
+/target/
+
+# Archivos generados por Gradle
+.gradle/
+build/
+
+# Configuración local
+.env
